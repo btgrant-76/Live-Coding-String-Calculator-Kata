@@ -1,4 +1,4 @@
-package com.morningstar.katas.string_calculator;
+package com.morningstar.katas.stringcalculator;
 
 public class StringCalculator {
 

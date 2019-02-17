@@ -1,0 +1,46 @@
+plugins {
+    id 'java-library'
+    id 'jacoco'
+}
+
+repositories {
+	mavenCentral()
+    jcenter()
+}
+
+def jupiter_version = '5.2.0'
+
+dependencies {
+    testCompile 'org.junit.platform:junit-platform-runner:1.2.0'
+    testCompile "org.junit.jupiter:junit-jupiter-api:$jupiter_version"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:$jupiter_version"
+}
+
+jacoco {
+    toolVersion = "0.8.2"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/test-coverage")
+    }
+}
+
+// from https://github.com/junit-team/junit5-samples/blob/r5.2.0/junit5-jupiter-starter-gradle/build.gradle
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+
+    reports {
+        html.enabled = true
+    }
+}
+
+sourceCompatibility = 1.8
+description = 'Practice the String Calculator Kata'
+version = 1.1
