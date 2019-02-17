@@ -1,8 +1,8 @@
 package com.morningstar.katas.stringcalculator;
 
-public class StringCalculator {
+class StringCalculator {
 
-  public static int calculateString(String calculateMe) {
+  int calculateString(String calculateMe) {
     return -1;
   }
 }

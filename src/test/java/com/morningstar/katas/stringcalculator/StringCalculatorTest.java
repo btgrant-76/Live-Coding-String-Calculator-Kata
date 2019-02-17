@@ -4,51 +4,58 @@ package com.morningstar.katas.stringcalculator;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.util.Arrays;
+import java.util.stream.Stream;
+import org.junit.Before;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-public class StringCalculatorTest {
+class StringCalculatorTest {
 
-  @Disabled
-  @Test
-  public void anEmptyStringReturnsZero() {
-    assertEquals(0, StringCalculator.calculateString(""));
+  private StringCalculator testMe;
+
+  @Before
+  void setUp() {
+    testMe = new StringCalculator();
   }
 
   @Disabled
   @Test
-  public void aSingleNumberReturnsTheValue() {
-    assertEquals(5, StringCalculator.calculateString("5"));
+  void anEmptyStringReturnsZero() {
+    assertEquals(0, testMe.calculateString(""));
   }
 
   @Disabled
   @Test
-  public void twoNumbersCommaDelimitedReturnsTheSum() {
-    assertEquals(14, StringCalculator.calculateString("5,9"));
+  void aSingleNumberReturnsTheValue() {
+    assertEquals(5, testMe.calculateString("5"));
   }
 
   @Disabled
   @Test
-  public void twoNumbersNewlineDelimitedReturnsTheSum() {
-    assertEquals(14, StringCalculator.calculateString("5\n9"));
+  void twoNumbersCommaDelimitedReturnsTheSum() {
+    assertEquals(14, testMe.calculateString("5,9"));
   }
 
   @Disabled
   @Test
-  public void threeNumbersDelimitedEitherWayReturnsTheSum() {
-    assertEquals(23, StringCalculator.calculateString("5\n9\n9"));
-    assertEquals(23, StringCalculator.calculateString("5,9,9"));
+  void twoNumbersNewlineDelimitedReturnsTheSum() {
+    assertEquals(14, testMe.calculateString("5\n9"));
   }
 
   @Disabled
   @Test
-  public void negativeNumbersThrowAnException() {
-    Arrays.asList("-1", "5,-1,9")
-        .stream()
-        .forEach((numString) -> {
+  void threeNumbersDelimitedEitherWayReturnsTheSum() {
+    assertEquals(23, testMe.calculateString("5\n9\n9"));
+    assertEquals(23, testMe.calculateString("5,9,9"));
+  }
+
+  @Disabled
+  @Test
+  void negativeNumbersThrowAnException() {
+    Stream.of("-1", "5,-1,9")
+        .forEach(numString -> {
           try {
-            StringCalculator.calculateString(numString);
+            testMe.calculateString(numString);
             fail("an exception should have been thrown for " + numString);
           } catch (IllegalArgumentException e) {
             assertEquals("negative numbers aren't allowed:  -1", e.getMessage());
@@ -58,26 +65,26 @@ public class StringCalculatorTest {
 
   @Disabled
   @Test
-  public void numbersGreaterThan1000AreIgnored() {
-    assertEquals(23, StringCalculator.calculateString("5,9,1025,9"));
+  void numbersGreaterThan1000AreIgnored() {
+    assertEquals(23, testMe.calculateString("5,9,1025,9"));
   }
 
   @Disabled
   @Test
-  public void aSingleCharDelimiterCanBeDefinedOnTheFirstLine() {
-    assertEquals(23, StringCalculator.calculateString("#\n5#9#9"));
+  void aSingleCharDelimiterCanBeDefinedOnTheFirstLine() {
+    assertEquals(23, testMe.calculateString("#\n5#9#9"));
   }
 
   @Disabled
   @Test
-  public void AMultiCharDelimiterCanBeDefinedOnTheFirstLine() {
-    assertEquals(23, StringCalculator.calculateString("[###]\n5###9###9"));
+  void aMultiCharDelimiterCanBeDefinedOnTheFirstLine() {
+    assertEquals(23, testMe.calculateString("[###]\n5###9###9"));
   }
 
   @Disabled
   @Test
-  public void manySingleOrMultiCharDelimitersCanBeDefined() {
-    assertEquals(23, StringCalculator.calculateString("[|||][$$]\n5|||9$$9"));
+  void manySingleOrMultiCharDelimitersCanBeDefined() {
+    assertEquals(23, testMe.calculateString("[|||][$$]\n5|||9$$9"));
   }
 
 }
