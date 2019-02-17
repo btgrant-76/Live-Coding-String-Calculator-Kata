@@ -1,5 +1,5 @@
 # Intro
-This project supports the live coding portion of my talk, "Test-Driven Development or: How I Learned to Stop Worrying and Love Testing my Code". `master` includes a single class and corresponding test suite that covers the various tasks described in the [String Calculator Kata](http://osherove.com/tdd-kata-1/). Each task has a unit test which, from the start, will be skipped. 
+This project supports the live coding portion of my talk, "Test-Driven Development or: How I Learned to Stop Worrying and Love Testing my Code". `master` includes a single class and corresponding test suite that covers the various tasks described in the [String Calculator Kata](http://www.peterprovost.org/blog/2012/05/02/kata-the-only-way-to-learn-tdd#the-string-calculator-kata). Each task has a unit test which, from the start, will be skipped.
 
 Working from the top of the test file:
 
