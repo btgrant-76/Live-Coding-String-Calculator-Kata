@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.stream.Stream;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +13,7 @@ class StringCalculatorTest {
 
   private StringCalculator testMe;
 
-  @Before
+  @BeforeEach
   void setUp() {
     testMe = new StringCalculator();
   }
